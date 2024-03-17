@@ -47,16 +47,18 @@ export default function Example() {
   const [servicos, setServicos] = useState([]);
 
   useEffect(() => {
-    console.log(user)
-    let promise = databases.listDocuments("pintura", "servicos", [
-      Query.equal('user_id', user?.$id),
-    ]);
-
+ 
 
     const userData = localStorage.getItem("user")
  if(userData){
     setUser(JSON.parse(userData))
- }
+    const users = JSON.parse(userData)
+
+    let promise = databases.listDocuments("pintura", "servicos", [
+      Query.equal('user_id', users?.$id),
+    ]);
+
+
     const getServicos = () => {
       promise.then(
         function (response) {
@@ -69,8 +71,11 @@ export default function Example() {
       );
     };
 
+ 
+   
+
     getServicos();
-  }, []);
+ } }, []);
 
 
   return (
