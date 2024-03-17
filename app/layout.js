@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./components/header";
 import Container from "./components/container";
 import Context from "./hooks/authContext";
-
+import Footer from "./components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
 
       </body>
       </Context> 
-
+      <Footer />
     </html>
   );
 }

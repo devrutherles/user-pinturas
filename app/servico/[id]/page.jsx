@@ -18,6 +18,7 @@ export default function Servicos({ params }) {
   const [whatsapp, setWhatsapp] = useState("");
   const [user, setUser] = useState(false);
   const [isLoading, setIsloading] = useState(false);
+  const [show, setShow] = useState(false)
 
   console.log(metragem, servico);
 
@@ -75,6 +76,7 @@ export default function Servicos({ params }) {
     promise.then(
       function (response) {
         setIsloading(false);
+        setShow(true)
 
         console.log(response); // Success
       },
@@ -91,7 +93,7 @@ export default function Servicos({ params }) {
       {isClient ? (
    
         <div className="space-y-10 divide-y divide-gray-900/10 mt-10 ">
-               <Notification/>
+              { show && <Notification setShow={setShow} show={show}/>}
           <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
             <div className="px-4 sm:px-0">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -287,7 +289,7 @@ export default function Servicos({ params }) {
                 <div class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
                 <div class="ml-2">
                   {" "}
-                  Carregando... <div></div>
+                  <div></div>
                 </div>
               </>
             ) : (

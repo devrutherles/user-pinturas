@@ -1,111 +1,574 @@
 import React from "react";
 
-const people = [
-  {
-    name: "Lindsay Walton",
-    role: "Front-end Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    twitterUrl: "#",
-    linkedinUrl: "#",
-  },
-  {
-    name: "Lindsay Walton",
-    role: "Front-end Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    twitterUrl: "#",
-    linkedinUrl: "#",
-  },
-
-  {
-    name: "Lindsay Walton",
-    role: "Front-end Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    twitterUrl: "#",
-    linkedinUrl: "#",
-  },
-
-  {
-    name: "Lindsay Walton",
-    role: "Front-end Developer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    twitterUrl: "#",
-    linkedinUrl: "#",
-  },
-  // More people...
-];
-
-export default function Home() {
+const Client = () => {
   return (
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-           Pinturas Já
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            Olá! O que te trouxe ao Pintura? Eu quero contratar
-          </p>
-        </div>
-        <ul
-          role="list"
-          className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-2"
-        >
-          {people.map((person) => (
-            <li key={person.name}>
+    <>
+      <section className="md:[&>section>section]:px-auto  [&>section>section>article]:mx-0 [&>section>section]:mb-0 [&>section>section]:mt-2 md-max:[&>section>section]:mx-auto">
+        <section className="md:flex md:justify-center relative overflow-hidden md:overflow-auto">
+          <section className="md:flex md:gap-10  md:px-0 container mt-32 mb-6 md:mb-12 text-gray-700">
+            <article className="w-full py-4 md:w-1/2 relative z-10">
+              <section className="md:mt-12 md:animate-fadeInUp lg:mt-28">
+                <img
+                  className="mb-6 block md:hidden float-right -mt-20 w-[188px] h-[180px]"
+                  src="https://wkncdn.com/p/uils/_next/static/media/hero-image-client-mobile.aeab15ee.webp"
+                  alt="Workana: Faça seu negócio crescer com o melhor talento remoto da América Latina."
+                />
+                <ul className="text-[12px] mb-2 mt-6 flex-wrap gap-x-4 gap-y-2 text-[#3d3d3d] hidden sm:flex font-medium">
+                  <li
+                    className="flex items-center gap-1  "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-check-circle h-4 w-4"
+                    >
+                      <g>
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </g>
+                    </svg>
+                    <span>Consultoria grátis</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1  "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-award h-4 w-4"
+                    >
+                      <g>
+                        <circle cx={12} cy={8} r={7} />
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                      </g>
+                    </svg>
+                    <span>Satisfação garantida</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1  "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-shield h-4 w-4"
+                    >
+                      <g>
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      </g>
+                    </svg>
+                    <span>Pagamentos protegidos</span>
+                  </li>
+                </ul>
+                <h1 className="font-sans !leading-[40px] !text-[28px]  md:!leading-[56px]  tracking-normal text-mbl-5xl  font-medium mb-4 mt-0   md:!text-[45px]">
+                  <span className="text-surface-text-high font-light">
+                    Tenha sempre o melhor{" "}
+                    <strong className="text-[#5746af] xl:block">
+                      profissional
+                    </strong>{" "}
+                    pelo melhor preço
+                  </span>
+                </h1>
+              </section>
+              <div className="   md:animate-delay-200 md:animate-fadeInUp lg:mb-40">
+                <h2 className="mb-6 text-[14px] font-normal ">
+                  Poste um anúncio com os detalhes do serviço. <br />
+                  Conectamos você com os melhores pintores adequados ao seu
+                  serviço.{" "}
+                </h2>
+                <ul className=" mt-6 flex-wrap gap-x-4 gap-y-2 max-md:text-[12px] md:text-[16px] flex mb-6 sm:hidden">
+                  <li
+                    className="flex items-center gap-1 "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-check-circle h-4 w-4"
+                    >
+                      <g>
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </g>
+                    </svg>
+                    <span>Consultoria grátis</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1 "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-award h-4 w-4"
+                    >
+                      <g>
+                        <circle cx={12} cy={8} r={7} />
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                      </g>
+                    </svg>
+                    <span>Satisfação garantida</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1 "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-shield h-4 w-4"
+                    >
+                      <g>
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      </g>
+                    </svg>
+                    <span>Pagamentos protegidos</span>
+                  </li>
+                </ul>
+                <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:mt-6 ">
+                  <a
+                    className="inline-flex gap-4 items-center font-medium text-base rounded-full py-3 px-6 max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors w-full md:w-auto bg-[#5746af]  hover:bg-secondary-low active:bg-secondary-low text-[#fff] focus:bg-secondary-low"
+                    href="/contratar"
+                  >
+                    Eu quero contratar
+                  </a>
+                  <a
+                    className="inline-flex  items-center bg-transparent font-medium text-base rounded-full border-1 py-3 px-6 leading-[1.375] md:w-auto max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors !gap-2 !border-transparent text-[#5746af] border-secondary hover:text-secondary-low hover:border-secondary-low active:border-secondary-low active:text-secondary-low focus:text-secondary-low focus:border-secondary-low"
+                    href="/pt/work"
+                  >
+                    Você quer trabalhar?
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-arrow-right h-6 w-6"
+                    >
+                      <g>
+                        <line x1={5} y1={12} x2={19} y2={12} />
+                        <polyline points="12 5 19 12 12 19" />
+                      </g>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <article className="hidden md:flex top-0 relative w-1/2 m-auto opacity-100 flex-row-reverse">
               <img
-                className="aspect-[3/2] w-full rounded-2xl object-cover"
-                src={person.imageUrl}
-                alt=""
+                className="md:animate-scaleIn"
+                src="https://wkncdn.com/p/uils/_next/static/media/hero-image-client.4f5cbaa7.webp"
+                alt="Workana: Faça seu negócio crescer com o melhor talento remoto da América Latina."
               />
-              <h3 className="mt-6 text-lg font-semibold leading-8 tracking-tight text-gray-900">
-                {person.name}
-              </h3>
-              <p className="text-base leading-7 text-gray-600">{person.role}</p>
-              <ul role="list" className="mt-6 flex gap-x-6">
-                <li>
-                  <a
-                    href={person.twitterUrl}
-                    className="text-gray-400 hover:text-gray-500"
+            </article>
+          </section>
+        </section>
+      </section>
+      <section className="my-8 flex justify-center px-4 ">
+        <div className="container flex flex-col gap-8">
+          <p className="font-sans leading-snug   text-[16px]  text-center text-caption font-normal uppercase tracking-widest !mb-0">
+            A plataforma ideal para sua decoração
+          </p>
+          <section className="flex flex-col gap-8 md:flex-row">
+            <article className="flex flex-col gap-4 rounded-[32px] p-6 md:w-1/2 bg-white">
+              <p className="font-sans leading-snug   text-[16px]  text-caption font-normal uppercase tracking-widest !text-left !mb-0 !text-caption-lg text-[#5746af]">
+                Profissionais de qualidade
+              </p>
+              <p className="text-[14px]">
+                Uma rede de profissionais capacitados revisados periodicamente
+                pela plataforma e com a garantia e referencia das avaliações de
+                clientes anteriores
+              </p>
+            </article>
+            <div className="flex gap-8 md:w-1/2">
+              <div className="flex overflow-hidden rounded-[32px] w-full bg-primary-container">
+                <img
+                  alt=""
+                  loading="lazy"
+                  width={590}
+                  height={180}
+                  decoding="async"
+                  data-nimg={1}
+                  className="w-full object-cover"
+                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-1-image.2f4a18b6.webp"
+                  style={{ color: "transparent" }}
+                />
+              </div>
+            </div>
+          </section>
+          <section className="flex flex-col gap-8 md:flex-row">
+            <article className="flex flex-col gap-4 rounded-[32px] p-6 md:w-1/2 bg-white md:order-1">
+              <p className="font-sans leading-snug   text-[16px]  text-caption font-normal uppercase tracking-widest !text-left !mb-0 !text-caption-lg text-[#5746af]">
+                Confiança
+              </p>
+              <p className="text-[14px]">
+                Todas as transações são controladas pela plataforma, o que
+                garante que o serviço seja pago somente após a satisfação do
+                cliente.
+              </p>
+            </article>
+            <div className="flex gap-8 md:w-1/2">
+              <div className="flex overflow-hidden rounded-[32px] w-7/12 bg-secondary-container">
+                <img
+                  alt="Programadores full-time"
+                  loading="lazy"
+                  width={320}
+                  height={180}
+                  decoding="async"
+                  data-nimg={1}
+                  className="w-full object-cover"
+                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-1.f07fc56b.webp"
+                  style={{ color: "transparent" }}
+                />
+              </div>
+              <div className="flex overflow-hidden rounded-[32px] w-5/12 bg-secondary-container">
+                <img
+                  alt="Freelancer"
+                  loading="lazy"
+                  width={235}
+                  height={180}
+                  decoding="async"
+                  data-nimg={1}
+                  className="w-full object-cover"
+                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-2.a6d8f170.webp"
+                  style={{ color: "transparent" }}
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </>
+  );
+};
+const Worker = () => {
+  return (
+    <>
+      <section className="md:[&>section>section]:px-auto  [&>section>section>article]:mx-0 [&>section>section]:mb-0 [&>section>section]:mt-2 md-max:[&>section>section]:mx-auto">
+        <section className="md:flex md:justify-center relative overflow-hidden md:overflow-auto">
+          <section className="md:flex md:gap-10  md:px-0 container mt-32 mb-6 md:mb-12 text-gray-700">
+            <article className="w-full py-4 md:w-1/2 relative z-10">
+              <section className="md:mt-12 md:animate-fadeInUp lg:mt-28">
+                <img
+                  className="mb-6 block md:hidden float-right -mt-20 w-[188px] h-[180px]"
+                  src="https://wkncdn.com/p/uils/_next/static/media/hero-image-client-mobile.aeab15ee.webp"
+                  alt="Workana: Faça seu negócio crescer com o melhor talento remoto da América Latina."
+                />
+                <ul className="text-[12px] mb-2 mt-6 flex-wrap gap-x-4 gap-y-2 text-[#3d3d3d] hidden sm:flex font-medium">
+                  <li
+                    className="flex items-center gap-1  "
+                    data-testid="hero-feature"
                   >
-                    <span className="sr-only">Twitter</span>
                     <svg
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-check-circle h-4 w-4"
                     >
-                      <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                      <g>
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </g>
+                    </svg>
+                    <span>Cadastro gratuito</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1  "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-award h-4 w-4"
+                    >
+                      <g>
+                        <circle cx={12} cy={8} r={7} />
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                      </g>
+                    </svg>
+                    <span>Pagamentos protegidos</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1  "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-dollar-sign h-4 w-4"
+                    >
+                      <g>
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                      </g>
+                    </svg>
+                    <span>Várias opções de saque</span>
+                  </li>
+                </ul>
+                <h1 className="font-sans !leading-[40px] !text-[28px]  md:!leading-[56px]  tracking-normal text-mbl-5xl  font-medium mb-4 mt-0   md:!text-[45px]">
+                  <span className="text-surface-text-high font-light">
+                    Encontre seus{" "}
+                    <strong className="text-[#5746af] xl:block">
+                      clientes
+                    </strong>{" "}
+                    e ganhe dinheiro
+                  </span>
+                </h1>
+              </section>
+              <div className="   md:animate-delay-200 md:animate-fadeInUp lg:mb-40">
+                <h2 className="mb-6 text-[14px] font-normal ">
+                  Receba um anúncio com os detalhes do serviço. <br />
+                  Conectamos você com milhares de clientes em busca de
+                  profissionais.{" "}
+                </h2>
+                <ul className=" mt-6 flex-wrap gap-x-4 gap-y-2 max-md:text-[12px] md:text-[16px] flex mb-6 sm:hidden">
+                  <li
+                    className="flex items-center gap-1 "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-check-circle h-4 w-4"
+                    >
+                      <g>
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                      </g>
+                    </svg>
+                    <span>Cadastro gratuito</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1 "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-award h-4 w-4"
+                    >
+                      <g>
+                        <circle cx={12} cy={8} r={7} />
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                      </g>
+                    </svg>
+                    <span>Pagamento garatido</span>
+                  </li>
+                  <li
+                    className="flex items-center gap-1 "
+                    data-testid="hero-feature"
+                  >
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-shield h-4 w-4"
+                    >
+                      <g>
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                      </g>
+                    </svg>
+                    <span>Várias opções de saque</span>
+                  </li>
+                </ul>
+                <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:mt-6 ">
+                  <a
+                    className="inline-flex gap-4 items-center font-medium text-base rounded-full py-3 px-6 max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors w-full md:w-auto bg-[#5746af]  hover:bg-secondary-low active:bg-secondary-low text-[#fff] focus:bg-secondary-low"
+                    href="/trabalhar"
+                  >
+                    Eu quero trabalhar
+                  </a>
+                  <a
+                    className="inline-flex  items-center bg-transparent font-medium text-base rounded-full border-1 py-3 px-6 leading-[1.375] md:w-auto max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors !gap-2 !border-transparent text-[#5746af] border-secondary hover:text-secondary-low hover:border-secondary-low active:border-secondary-low active:text-secondary-low focus:text-secondary-low focus:border-secondary-low"
+                    href="/contratar"
+                  >
+                    Você quer contratar?
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-arrow-right h-6 w-6"
+                    >
+                      <g>
+                        <line x1={5} y1={12} x2={19} y2={12} />
+                        <polyline points="12 5 19 12 12 19" />
+                      </g>
                     </svg>
                   </a>
-                </li>
-                <li>
-                  <a
-                    href={person.linkedinUrl}
-                    className="text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">LinkedIn</span>
-                    <svg
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          ))}
-        </ul>
+                </div>
+              </div>
+            </article>
+            <article className="hidden md:flex top-0 relative w-1/2 m-auto opacity-100 flex-row-reverse">
+              <img
+                className="md:animate-scaleIn"
+                src="https://wkncdn.com/p/uils/_next/static/media/hero-image-client.4f5cbaa7.webp"
+                alt="Workana: Faça seu negócio crescer com o melhor talento remoto da América Latina."
+              />
+            </article>
+          </section>
+        </section>
+      </section>
+      <section className="my-8 flex justify-center px-4 ">
+        <div className="container flex flex-col gap-8">
+          <p className="font-sans leading-snug   text-[16px]  text-center text-caption font-normal uppercase tracking-widest !mb-0">
+            A plataforma ideal para alavancar seus ganhos
+          </p>
+          <section className="flex flex-col gap-8 md:flex-row">
+            <article className="flex flex-col gap-4 rounded-[32px] p-6 md:w-1/2 bg-white">
+              <p className="font-sans leading-snug   text-[16px]  text-caption font-normal uppercase tracking-widest !text-left !mb-0 !text-caption-lg text-[#5746af]">
+                Trabalhos contantes
+              </p>
+              <p className="text-[14px]">
+                Uma rede de clientes cadastrados que precisam encontrar o
+                profissional ideal, aumente seus ganhos de forma fácil
+              </p>
+            </article>
+            <div className="flex gap-8 md:w-1/2">
+              <div className="flex overflow-hidden rounded-[32px] w-full bg-primary-container">
+                <img
+                  alt=""
+                  loading="lazy"
+                  width={590}
+                  height={180}
+                  decoding="async"
+                  data-nimg={1}
+                  className="w-full object-cover"
+                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-1-image.2f4a18b6.webp"
+                  style={{ color: "transparent" }}
+                />
+              </div>
+            </div>
+          </section>
+          <section className="flex flex-col gap-8 md:flex-row">
+            <article className="flex flex-col gap-4 rounded-[32px] p-6 md:w-1/2 bg-white md:order-1">
+              <p className="font-sans leading-snug   text-[16px]  text-caption font-normal uppercase tracking-widest !text-left !mb-0 !text-caption-lg text-[#5746af]">
+                Confiança
+              </p>
+              <p className="text-[14px]">
+                Todas as transações são controladas pela plataforma, o que
+                garante que o serviço seja pago após a conclusão.
+              </p>
+            </article>
+            <div className="flex gap-8 md:w-1/2">
+              <div className="flex overflow-hidden rounded-[32px] w-7/12 bg-secondary-container">
+                <img
+                  alt="Programadores full-time"
+                  loading="lazy"
+                  width={320}
+                  height={180}
+                  decoding="async"
+                  data-nimg={1}
+                  className="w-full object-cover"
+                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-1.f07fc56b.webp"
+                  style={{ color: "transparent" }}
+                />
+              </div>
+              <div className="flex overflow-hidden rounded-[32px] w-5/12 bg-secondary-container">
+                <img
+                  alt="Freelancer"
+                  loading="lazy"
+                  width={235}
+                  height={180}
+                  decoding="async"
+                  data-nimg={1}
+                  className="w-full object-cover"
+                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-2.a6d8f170.webp"
+                  style={{ color: "transparent" }}
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </>
+  );
+};
+export default function Home() {
+  const role = "client";
+  return (
+    <div className=" ">
+      <div className="mx-auto max-w-7xl ">
+        {role != "worker" ? <Client /> : <Worker />}
       </div>
     </div>
   );
