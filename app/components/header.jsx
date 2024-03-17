@@ -8,9 +8,10 @@ import { useState , useContext } from "react";
 import { AuthContext } from "../hooks/authContext";
 import Link from "next/link";
 const navigation = [
-  { name: "Contrate", href: "#", current: true },
-  { name: "Meus projetos", href: "#", current: false },
-  { name: "Minhas finanças", href: "#", current: false },
+  { name: "Inicio", href: "/", current: true },
+  { name: "Perfil", href: "/perfil", current: false },
+  { name: "Ajuda", href: "/ajuda", current: false },
+  { name: "Contato", href: "/contato", current: false },
 ];
 
 function classNames(...classes) {
@@ -20,7 +21,6 @@ function classNames(...classes) {
 export default function Example() {
   const router = useRouter();
   const {session,menageSession} = useContext(AuthContext)
-  const role = "client";
   const user = JSON.parse(localStorage.getItem("user"));
   const [select,setSelect] = useState('Inicio')
   const sair = () => {
@@ -59,10 +59,7 @@ export default function Example() {
 
 
   return (
-    <Disclosure
-      as="nav"
-      className="bg-[#fcfcfc] border-b-[#e2e2e2] border-b-[1px]"
-    >
+    <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -79,28 +76,29 @@ export default function Example() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <a href="/" className="flex w-auto h-auto cursor-pointer">
+                <div className="flex flex-shrink-0 items-center">
                   <img
-                    alt=""
-                    className="h-8"
-                    src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f6989c3835d327b838/view?project=65f63eb7a14355c1ee4e&mode=admin"
+                    className="block h-8 w-auto lg:hidden"
+                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    alt="Your Company"
                   />
-                </a>
+                  <img
+                    className="hidden h-8 w-auto lg:block"
+                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    alt="Your Company"
+                  />
+                </div>
                 <div className="hidden sm:ml-6 sm:block">
-                  <div
-                    className={classNames(
-                      isSignedIn ? "flex" : "hidden",
-                      "  space-x-4"
-                    )}
-                  >
+                  <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <Link
                       onClick={()=>setSelect(item.name)}
                         href={item.href}
                         className={classNames(
                           item.name == select
-                          ? " text-[#404040]   "
-                          : "text-[#898989]  hover:text-[#404040]",
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -198,7 +196,7 @@ export default function Example() {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-4 pt-2">
+            <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -206,8 +204,8 @@ export default function Example() {
                   href={item.href}
                   className={classNames(
                     item.current
-? " text-[#404040]   "
-: "text-[#898989]  hover:text-[#404040]",
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
@@ -215,33 +213,6 @@ export default function Example() {
                   {item.name}
                 </Disclosure.Button>
               ))}
-
-              <div className="flex justify-center !mt-8 gap-2 w-full items-center">
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className={classNames(
-                    role == "client"
-                      ? " text-[#fff] bg-[#5746af]  "
-                      : "text-[#898989]  hover:text-[#5746af]",
-                    "block rounded-[24px] text-center px-4 py-3 text-base font-medium w-1/2 "
-                  )}
-                >
-                  Quero contratar
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href={"#"}
-                  className={classNames(
-                    role == "worker"
-                      ? " text-[#fff] bg-[#5746af]  "
-                      : "text-[#898989]  hover:text-[#5746af]",
-                    "block rounded-[24px] text-center px-4 py-3 text-base font-medium w-1/2"
-                  )}
-                >
-                  Quero trabalhar
-                </Disclosure.Button>
-              </div>
             </div>
           </Disclosure.Panel>
         </>
