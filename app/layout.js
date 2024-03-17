@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Container from "./components/container";
+import Context from "./hooks/authContext";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -12,13 +14,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+     <Context> <body className={inter.className}>
         <Header />
         <div className="mx-auto  max-w-7xl px-4 sm:px-6 lg:px-8">
         {children}
         </div>
 
       </body>
+      </Context> 
     </html>
   );
 }
