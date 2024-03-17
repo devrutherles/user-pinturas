@@ -38,6 +38,7 @@ export default function Example() {
   const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] =
     useState(true);
   const [current, setCurrent] = useState("Perfil");
+ 
   const [user,setUser]= useState({})
   
 
@@ -50,10 +51,12 @@ export default function Example() {
     let promise = databases.listDocuments("pintura", "servicos", [
       Query.equal('user_id', user?.$id),
     ]);
+
+
     const userData = localStorage.getItem("user")
-
+ if(userData){
     setUser(JSON.parse(userData))
-
+ }
     const getServicos = () => {
       promise.then(
         function (response) {
