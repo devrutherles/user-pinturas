@@ -11,7 +11,7 @@ export default function Contratar() {
               <div className="flex gap-[8px] mb-[8px] pl-[0] pr-[24px] py-[12px] text-[#5746af] w-[150px]">
                 <img
                   src="https://wkncdn.com/newx/assets/build/img/signup/arrow-left.fc0b951aa.svg"
-                  alt
+                  alt=""
                 />{" "}
                 <p>Voltar</p>
               </div>{" "}

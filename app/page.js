@@ -1,4 +1,7 @@
+'use client'
 import React from "react";
+import useRole from "./hooks/useRole";
+import Link from "next/link";
 
 const Client = () => {
   return (
@@ -10,7 +13,7 @@ const Client = () => {
               <section className="md:mt-12 md:animate-fadeInUp lg:mt-28">
                 <img
                   className="mb-6 block md:hidden float-right -mt-20 w-[188px] h-[180px]"
-                  src="https://wkncdn.com/p/uils/_next/static/media/hero-image-client-mobile.aeab15ee.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f70077803c444b2e1f/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   alt="Workana: Faça seu negócio crescer com o melhor talento remoto da América Latina."
                 />
                 <ul className="text-[12px] mb-2 mt-6 flex-wrap gap-x-4 gap-y-2 text-[#3d3d3d] hidden sm:flex font-medium">
@@ -164,15 +167,15 @@ const Client = () => {
                   </li>
                 </ul>
                 <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:mt-6 ">
-                  <a
+                  <Link
                     className="inline-flex gap-4 items-center font-medium text-base rounded-full py-3 px-6 max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors w-full md:w-auto bg-[#5746af]  hover:bg-secondary-low active:bg-secondary-low text-[#fff] focus:bg-secondary-low"
                     href="/contratar"
                   >
                     Eu quero contratar
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="inline-flex  items-center bg-transparent font-medium text-base rounded-full border-1 py-3 px-6 leading-[1.375] md:w-auto max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors !gap-2 !border-transparent text-[#5746af] border-secondary hover:text-secondary-low hover:border-secondary-low active:border-secondary-low active:text-secondary-low focus:text-secondary-low focus:border-secondary-low"
-                    href="/pt/work"
+                    href="/trabalhar"
                   >
                     Você quer trabalhar?
                     <svg
@@ -191,21 +194,21 @@ const Client = () => {
                         <polyline points="12 5 19 12 12 19" />
                       </g>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>
             <article className="hidden md:flex top-0 relative w-1/2 m-auto opacity-100 flex-row-reverse">
               <img
                 className="md:animate-scaleIn"
-                src="https://wkncdn.com/p/uils/_next/static/media/hero-image-client.4f5cbaa7.webp"
+                src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f7008753b42bfc1cfe/view?project=65f63eb7a14355c1ee4e&mode=admin"
                 alt="Workana: Faça seu negócio crescer com o melhor talento remoto da América Latina."
               />
             </article>
           </section>
         </section>
       </section>
-      <section className="my-8 flex justify-center px-4 ">
+      <section className="my-16 flex justify-center px-4 ">
         <div className="container flex flex-col gap-8">
           <p className="font-sans leading-snug   text-[16px]  text-center text-caption font-normal uppercase tracking-widest !mb-0">
             A plataforma ideal para sua decoração
@@ -231,7 +234,7 @@ const Client = () => {
                   decoding="async"
                   data-nimg={1}
                   className="w-full object-cover"
-                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-1-image.2f4a18b6.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f702ee616c560536c2/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   style={{ color: "transparent" }}
                 />
               </div>
@@ -258,7 +261,7 @@ const Client = () => {
                   decoding="async"
                   data-nimg={1}
                   className="w-full object-cover"
-                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-1.f07fc56b.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f7041eb7f6e7626d73/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   style={{ color: "transparent" }}
                 />
               </div>
@@ -271,7 +274,7 @@ const Client = () => {
                   decoding="async"
                   data-nimg={1}
                   className="w-full object-cover"
-                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-2.a6d8f170.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f702fb60690a533a27/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   style={{ color: "transparent" }}
                 />
               </div>
@@ -350,10 +353,10 @@ const Worker = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-dollar-sign h-4 w-4"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-dollar-sign h-4 w-4"
                     >
                       <g>
                         <line x1="12" y1="1" x2="12" y2="23"></line>
@@ -447,13 +450,13 @@ const Worker = () => {
                   </li>
                 </ul>
                 <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:mt-6 ">
-                  <a
+                  <Link
                     className="inline-flex gap-4 items-center font-medium text-base rounded-full py-3 px-6 max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors w-full md:w-auto bg-[#5746af]  hover:bg-secondary-low active:bg-secondary-low text-[#fff] focus:bg-secondary-low"
                     href="/trabalhar"
                   >
                     Eu quero trabalhar
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="inline-flex  items-center bg-transparent font-medium text-base rounded-full border-1 py-3 px-6 leading-[1.375] md:w-auto max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors !gap-2 !border-transparent text-[#5746af] border-secondary hover:text-secondary-low hover:border-secondary-low active:border-secondary-low active:text-secondary-low focus:text-secondary-low focus:border-secondary-low"
                     href="/contratar"
                   >
@@ -474,7 +477,7 @@ const Worker = () => {
                         <polyline points="12 5 19 12 12 19" />
                       </g>
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>
@@ -488,7 +491,7 @@ const Worker = () => {
           </section>
         </section>
       </section>
-      <section className="my-8 flex justify-center px-4 ">
+      <section className="my-16 flex justify-center px-4 ">
         <div className="container flex flex-col gap-8">
           <p className="font-sans leading-snug   text-[16px]  text-center text-caption font-normal uppercase tracking-widest !mb-0">
             A plataforma ideal para alavancar seus ganhos
@@ -513,7 +516,7 @@ const Worker = () => {
                   decoding="async"
                   data-nimg={1}
                   className="w-full object-cover"
-                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-1-image.2f4a18b6.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f702ee616c560536c2/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   style={{ color: "transparent" }}
                 />
               </div>
@@ -539,7 +542,7 @@ const Worker = () => {
                   decoding="async"
                   data-nimg={1}
                   className="w-full object-cover"
-                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-1.f07fc56b.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f7041eb7f6e7626d73/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   style={{ color: "transparent" }}
                 />
               </div>
@@ -552,7 +555,7 @@ const Worker = () => {
                   decoding="async"
                   data-nimg={1}
                   className="w-full object-cover"
-                  src="https://wkncdn.com/p/uils/_next/static/media/paragraph-2-image-2.a6d8f170.webp"
+                  src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f702fb60690a533a27/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   style={{ color: "transparent" }}
                 />
               </div>
@@ -564,7 +567,7 @@ const Worker = () => {
   );
 };
 export default function Home() {
-  const role = "client";
+  const role = useRole()
   return (
     <div className=" ">
       <div className="mx-auto max-w-7xl ">

@@ -10,7 +10,12 @@ export default function FormCadastro() {
   const { session, menageSession } = useContext(AuthContext);
   const [name, setName] = useState("");
   const [isLoading, setIsloading] = useState(false);
-
+  const [error, setError] = useState({
+    email: "",
+    password: "",
+    name:''
+  });
+  
   const login = async (email, password) => {
     const promise = account.createEmailSession(email, password);
 
@@ -40,10 +45,37 @@ export default function FormCadastro() {
   };
 
   const register = async () => {
+    setError({
+      email:'',
+      password:'',
+      name:""
+    })
+    if (!email) {
+      setError((prevError) => ({
+        ...prevError,
+        email: "Insira um e-mail válido",
+      }));
+    } 
+    
+    else if (!name) {
+      setError((prevError) => ({
+        ...prevError,
+        name: "Insira um nome válido",
+      })); }
+    else if (!password) {
+      setError((prevError) => ({
+        ...prevError,
+        password: "Insira uma senha válida",
+      }));
+    } 
+     
+    
+    else {
+
     setIsloading(true);
 
     await account.create(ID.unique(), email, password, name);
-    login(email, password);
+    login(email, password);}
   };
 
   return (
@@ -54,9 +86,11 @@ export default function FormCadastro() {
             htmlFor="email"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Email address
+            Email 
           </label>
           <div className="mt-2">
+          {error.email && <p className="text-red-600 text-[12px]">{error.email}</p>}
+
             <input
               id="email"
               name="email"
@@ -66,7 +100,7 @@ export default function FormCadastro() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full px-4 rounded-md border-0 py-1.5 focus-visible:outline-none placeholder:text-gray-400  sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -79,13 +113,15 @@ export default function FormCadastro() {
             Nome completo
           </label>
           <div className="mt-2">
+          {error.name && <p className="text-red-600 text-[12px]">{error.name}</p>}
+
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full px-4 rounded-md border-0 py-1.5 focus-visible:outline-none placeholder:text-gray-400  sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -95,58 +131,36 @@ export default function FormCadastro() {
             htmlFor="password"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Password
+            Senha
           </label>
           <div className="mt-2">
+          {error.password && <p className="text-red-600 text-[12px]">{error.password}</p>}
+
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="Email"
+              placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
               required
-              className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full px-4 rounded-md border-0 py-1.5 focus-visible:outline-none placeholder:text-gray-400  sm:text-sm sm:leading-6"
             />
           </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <input
-              id="remember-me"
-              name="remember-me"
-              type="checkbox"
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-            />
-            <label
-              htmlFor="remember-me"
-              className="ml-3 block text-sm leading-6 text-gray-700"
-            >
-              Remember me
-            </label>
-          </div>
-
-          <div className="text-sm leading-6">
-            <a
-              href="#"
-              className="font-semibold text-indigo-600 hover:text-indigo-500"
-            >
-              Forgot password?
-            </a>
-          </div>
-        </div>
+        
 
         <div>
           <button
             onClick={register}
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full justify-center rounded-md bg-[#5746af] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#8a7bd4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
              {isLoading ? (
               <>
-                <div class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
-                <div class="ml-2">
+                <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
+                <div className="ml-2">
                   {" "}
                   Carregando... <div></div>
                 </div>

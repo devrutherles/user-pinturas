@@ -11,6 +11,7 @@ import {
   UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const navigation = [
   { name: "Home", href: "#" },
@@ -50,7 +51,7 @@ export default function Example() {
             >
               {secondaryNavigation.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.href}
                     className={classNames(
                       item.current
@@ -69,7 +70,7 @@ export default function Example() {
                       aria-hidden="true"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,14 +1,16 @@
+import Link from "next/link";
+
 export default function Faq() {
   return (
     <div>
       <div className=" rounded-lg  py-8 ">
-        <a
+        <Link
           href="/"
           className="flex gap-[8px] mb-[8px] pl-[0] pr-[24px] py-[12px] text-[#5746af] w-[150px]"
         >
           <img src="https://wkncdn.com/newx/assets/build/img/signup/arrow-left.fc0b951aa.svg" />{" "}
           <p>Voltar</p>
-        </a>
+        </Link>
         <h4 className="text-[#141414] font-['IBM_Plex_Sans',_sans-serif] text-[28px] not-italic font-normal leading-[40px]  mt-[8px] text-left">
           Perguntas frequentes
         </h4>
@@ -45,13 +47,13 @@ export default function Faq() {
                 repudiandae commodi perferendis et itaque, similique fugiat
                 cumque impedit iusto vitae dolorum. Nostrum, fugit!
               </p>
-              <a
+              <Link
                 href="#"
                 className="text-[#5746af] hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex space-x-8 mt-8">
@@ -81,13 +83,13 @@ export default function Faq() {
                 repudiandae commodi perferendis et itaque, similique fugiat
                 cumque impedit iusto vitae dolorum. Nostrum, fugit!
               </p>
-              <a
+              <Link
                 href="#"
                 className="text-[#5746af] hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex space-x-8 mt-8">
@@ -117,13 +119,13 @@ export default function Faq() {
                 repudiandae commodi perferendis et itaque, similique fugiat
                 cumque impedit iusto vitae dolorum. Nostrum, fugit!
               </p>
-              <a
+              <Link
                 href="#"
                 className="text-[#5746af] hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex space-x-8 mt-8">
@@ -153,13 +155,13 @@ export default function Faq() {
                 repudiandae commodi perferendis et itaque, similique fugiat
                 cumque impedit iusto vitae dolorum. Nostrum, fugit!
               </p>
-              <a
+              <Link
                 href="#"
                 className="text-[#5746af] hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex space-x-8 mt-8">
@@ -189,13 +191,13 @@ export default function Faq() {
                 repudiandae commodi perferendis et itaque, similique fugiat
                 cumque impedit iusto vitae dolorum. Nostrum, fugit!
               </p>
-              <a
+              <Link
                 href="#"
                 className="text-[#5746af] hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex space-x-8 mt-8">
@@ -225,13 +227,13 @@ export default function Faq() {
                 repudiandae commodi perferendis et itaque, similique fugiat
                 cumque impedit iusto vitae dolorum. Nostrum, fugit!
               </p>
-              <a
+              <Link
                 href="#"
                 className="text-[#5746af] hover:text-blue-800 hover:underline capitalize"
                 title="Read More"
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         </div>

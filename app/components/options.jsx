@@ -9,7 +9,7 @@ export default function Options() {
       id="chooseModalityBlock"
     >
       <div className="container  flex flex-col gap-12 md:flex-row md:gap-8 lg:gap-10">
-        <a
+        <Link
           className="flex break-words flex-col gap-4 border bg-white  p-6  rounded-[32px] transition-colors hover:border-[#5746af] lg:w-1/2"
           data-testid="home-modality-card"
           href="/pt/hire/devs"
@@ -33,8 +33,8 @@ export default function Options() {
               externamente.
             </p>
           </div>
-        </a>
-        <a
+        </Link>
+        <Link
           className="flex break-words flex-col gap-4 border bg-white  p-6  rounded-[32px] transition-colors hover:border-[#5746af] lg:w-1/2"
           data-testid="home-modality-card"
           href="/pt/hire/freelancers"
@@ -58,7 +58,7 @@ export default function Options() {
               garagem, quadras esportivas, área de lazer, entre outras.
             </p>
           </div>
-        </a>
+        </Link>
       </div>
     </section>
   );

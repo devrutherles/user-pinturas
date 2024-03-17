@@ -286,8 +286,8 @@ export default function Servicos({ params }) {
                 >
                {isLoading ? (
               <>
-                <div class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
-                <div class="ml-2">
+                <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
+                <div className="ml-2">
                   {" "}
                   <div></div>
                 </div>

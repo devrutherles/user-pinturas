@@ -1,10 +1,13 @@
 "use client";
 
-export const updateRole = (data, setRole) => {
-  setRole(data);
-  localStorage.setItem("role", data);
-};
+import { useContext } from "react";
+import { AuthContext } from "../hooks/authContext";
+
+
 
 export function getRole() {
-  alert("oi");
+  const { role, manageRole} = useContext(AuthContext)
+
+  return role
+
 }

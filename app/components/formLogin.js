@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { account } from "../appwrite";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "../hooks/authContext";
+import Link from "next/link";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
@@ -9,9 +10,24 @@ export default function FormLogin() {
   const route = useRouter();
   const [isLoading, setIsloading] = useState(false);
   const { menageSession } = useContext(AuthContext);
-
+  const [error, setError] = useState({
+    email: "",
+    password: "",
+  });
+  
   const login = async (email, password) => {
-    const promise = account.createEmailSession(email, password);
+    if (!email) {
+      setError((prevError) => ({
+        ...prevError,
+        email: "Insira um e-mail válido",
+      }));
+    } else if (!password) {
+      setError((prevError) => ({
+        ...prevError,
+        password: "Insira uma senha válida",
+      }));
+    } else {
+    const promise = account.createEmailPasswordSession(email, password);
     setIsloading(true);
     promise.then(
       function (response) {
@@ -34,7 +50,7 @@ export default function FormLogin() {
         console.log(error); // Failure
       }
     );
-  };
+  }};
 
   return (
     <div>
@@ -44,9 +60,10 @@ export default function FormLogin() {
             htmlFor="email"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Email address
+            Email
           </label>
           <div className="mt-2">
+          {error.email && <p className="text-red-600 text-[12px]">{error.email}</p>}
             <input
               id="email"
               name="email"
@@ -56,7 +73,7 @@ export default function FormLogin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full px-4 rounded-md border-0 py-1.5  placeholder:text-gray-400  sm:text-sm sm:leading-6 focus-visible:outline-none"
             />
           </div>
         </div>
@@ -66,19 +83,21 @@ export default function FormLogin() {
             htmlFor="password"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Password
+            Senha
           </label>
           <div className="mt-2">
+          {error.password && <p className="text-red-600 text-[12px]">{error.password}</p>}
+
             <input
               id="password"
               name="password"
               type="password"
-              placeholder="Email"
+              placeholder="Senha"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
               required
-              className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full px-4 rounded-md border-0 py-1.5 shadow-sm  placeholder:text-gray-400  sm:text-sm sm:leading-6 focus-visible:outline-none"
             />
           </div>
         </div>
@@ -95,17 +114,17 @@ export default function FormLogin() {
               htmlFor="remember-me"
               className="ml-3 block text-sm leading-6 text-gray-700"
             >
-              Remember me
+              Lembre de mim
             </label>
           </div>
 
           <div className="text-sm leading-6">
-            <a
+            <Link
               href="#"
               className="font-semibold text-indigo-600 hover:text-indigo-500"
             >
-              Forgot password?
-            </a>
+              Esqueceu sua senha?{" "}
+            </Link>
           </div>
         </div>
 
@@ -116,14 +135,14 @@ export default function FormLogin() {
           >
             {isLoading ? (
               <>
-                <div class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
-                <div class="ml-2">
+                <div className="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
+                <div className="ml-2">
                   {" "}
                   Carregando... <div></div>
                 </div>
               </>
             ) : (
-              "Login"
+              "Entrar"
             )}
           </button>
         </div>
