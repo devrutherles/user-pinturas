@@ -23,15 +23,13 @@ export default function Example() {
   const role = "client";
   const user = JSON.parse(localStorage.getItem("user"));
   const [select,setSelect] = useState('Inicio')
-  const sair = () => {
-    localStorage.clear("user");
 
-    router.push("/");
-  };
 
   const logout = async () => {
-    const user = await account.deleteSession("current");
+    await account.deleteSession("current");
     menageSession(null);
+    localStorage.clear('user')
+
     router.push('/')
   };
 

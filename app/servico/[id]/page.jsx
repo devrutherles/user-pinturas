@@ -1,16 +1,17 @@
 "use client";
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import Select from "../../components/select";
-import { databases, ID, Query } from "../../appwrite";
-import { useEffect, useState } from "react";
-import Notification from "@/app/components/notification";
+import { account, databases, ID, Query } from "../../appwrite";
+import { useContext, useEffect, useState } from "react";
+import Alert from "@/app/components/alert";
+import Tabs from "@/app/components/tabs";
+import AlertLogin from "@/app/components/alertLogin";
+import { AuthContext } from "@/app/hooks/authContext";
 
 export default function Servicos({ params }) {
   const [servico, setServico] = useState(null);
   const [isClient, setIsClient] = useState(false);
   const id = params.id;
   const [comodos, setComodos] = useState({ id: 1, name: "1 comodo" });
-  const [precoComodos, setPrecoComodos] = useState(null);
   const [metragem, setMetragem] = useState(1);
   const [oferta, setOferta] = useState();
   const [pintura, setPintura] = useState(1);
@@ -18,9 +19,9 @@ export default function Servicos({ params }) {
   const [whatsapp, setWhatsapp] = useState("");
   const [user, setUser] = useState(false);
   const [isLoading, setIsloading] = useState(false);
-  const [show, setShow] = useState(false)
-
-  console.log(metragem, servico);
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+  const { session, menageSession } = useContext(AuthContext);
 
   useEffect(() => {
     setIsClient(true);
@@ -45,16 +46,17 @@ export default function Servicos({ params }) {
     };
 
     getPreco();
-  }, []);
+  }, [id]);
 
   const data = {
     user: user?.name,
+    user_id: user?.$id,
     comodos: comodos?.name,
-    servico: servico == 1 ? "Pintura interna" : "Pintura externa",
-    oferta: parseInt(oferta)  || 0,
+    servico: id == "interna" ? "Pintura interna" : "Pintura externa",
+    oferta: parseInt(oferta) || 0,
     visita: visita,
     telefone: whatsapp,
-    m2: metragem,
+    m2: metragem.toString(),
     valor:
       pintura == 1
         ? comodos?.id * servico?.pintura
@@ -64,6 +66,10 @@ export default function Servicos({ params }) {
   console.log(data);
 
   const createServico = () => {
+    if (!user) {
+      setShow(true);
+      return;
+    }
     setIsloading(true);
 
     const promise = databases.createDocument(
@@ -76,14 +82,13 @@ export default function Servicos({ params }) {
     promise.then(
       function (response) {
         setIsloading(false);
-        setShow(true)
+        setOpen(true);
 
         console.log(response); // Success
       },
       function (error) {
         console.log(error); // Failure
         setIsloading(false);
-
       }
     );
   };
@@ -91,22 +96,26 @@ export default function Servicos({ params }) {
   return (
     <>
       {isClient ? (
-   
         <div className="space-y-10 divide-y divide-gray-900/10 mt-10 ">
-              { show && <Notification setShow={setShow} show={show}/>}
+          <Alert open={open} setOpen={setOpen} />
+          <AlertLogin open={show} setOpen={setShow} />
+
           <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
             <div className="px-4 sm:px-0">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Profile
+                Pinte já
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
-                This information will be displayed publicly so be careful what
-                you share.
+                Solicite seu orçamento e em breve nossa equipe de profissionais
+                entrarão em contato pelo whatsApp
               </p>
             </div>
-
             <div className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
               <div className="px-4 py-6 sm:p-8">
+                <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 mb-10">
+                  <Tabs />
+                </div>
+
                 <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 ">
                   {id == "interna" ? (
                     <Select setComodos={setComodos} comodos={comodos} />
@@ -231,23 +240,30 @@ export default function Servicos({ params }) {
                     </h2>
                     <p className="text-gray-500">
                       Valor Sugerido R$
-
-
-                      {servico?.pintura ?
-                      <>
-                      {id == "interna" && servico?.pintura
-                        ? id == "interna" && pintura == 1
-                          ? comodos?.id * servico?.pintura
-                          : comodos?.id * servico?.repintura
-                        : <></>}
-                      {id == "externa" && servico?.pintura
-                        ? id == "externa" && pintura == 1
-                          ? metragem * servico?.pintura
-                          : metragem * servico?.repintura
-                        : <></>}
-</>
-                        : 0}
-                        
+                      {servico?.pintura ? (
+                        <>
+                          {id == "interna" && servico?.pintura ? (
+                            id == "interna" && pintura == 1 ? (
+                              comodos?.id * servico?.pintura
+                            ) : (
+                              comodos?.id * servico?.repintura
+                            )
+                          ) : (
+                            <></>
+                          )}
+                          {id == "externa" && servico?.pintura ? (
+                            id == "externa" && pintura == 1 ? (
+                              metragem * servico?.pintura
+                            ) : (
+                              metragem * servico?.repintura
+                            )
+                          ) : (
+                            <></>
+                          )}
+                        </>
+                      ) : (
+                        0
+                      )}
                     </p>
                     <p className="mt-5 text-sm leading-6 text-gray-600">
                       <div className="sm:col-span-3">
@@ -284,17 +300,17 @@ export default function Servicos({ params }) {
                   onClick={() => createServico()}
                   className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-               {isLoading ? (
-              <>
-                <div class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
-                <div class="ml-2">
-                  {" "}
-                  <div></div>
-                </div>
-              </>
-            ) : (
-              "Enviar"
-            )}
+                  {isLoading ? (
+                    <>
+                      <div class="h-5 w-5 border-t-transparent border-solid animate-spin rounded-full border-white border-4"></div>
+                      <div class="ml-2">
+                        {" "}
+                        <div></div>
+                      </div>
+                    </>
+                  ) : (
+                    "Enviar"
+                  )}
                 </button>
               </div>
             </div>

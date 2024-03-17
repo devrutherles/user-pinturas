@@ -1,10 +1,8 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Container from "./components/container";
 import Context from "./hooks/authContext";
 import Footer from "./components/footer";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -13,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-     <Context> <body className={inter.className}>
+    <html lang="pt">
+     <Context> <body >
         <Header />
         <div className="mx-auto  max-w-7xl px-4 sm:px-6 lg:px-8">
         {children}
