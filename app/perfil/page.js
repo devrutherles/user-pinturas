@@ -38,8 +38,9 @@ export default function Example() {
   const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] =
     useState(true);
   const [current, setCurrent] = useState("Perfil");
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+  const userData = localStorage.getItem("user")
+  const user = JSON.parse(userData);
+
   const [nome, setNome] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
   const [servicos, setServicos] = useState([]);
