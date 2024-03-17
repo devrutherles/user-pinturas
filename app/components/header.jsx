@@ -23,8 +23,10 @@ export default function Example() {
   const [select,setSelect] = useState('Inicio')
 const path = usePathname()
   const logout = async () => {
-    const user = await account.deleteSession("current");
+    await account.deleteSession("current");
     menageSession(null);
+    localStorage.clear('user')
+
     router.push('/')
   };
 

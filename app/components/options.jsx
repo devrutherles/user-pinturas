@@ -12,10 +12,10 @@ export default function Options() {
         <Link
           className="flex break-words flex-col gap-4 border bg-white  p-6  rounded-[32px] transition-colors hover:border-[#5746af] lg:w-1/2"
           data-testid="home-modality-card"
-          href="/pt/hire/devs"
+           href={'/servico/interna'}
         >
           <header className="flex flex-col gap-4">
-            <Link  href={'/servico/interna'}  className="flex items-center  ">
+            <div  href={'/servico/interna'}  className="flex items-center  ">
               <img
                 className="!aspect-auto h-10  mr-4"
                 src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f687cb6da92412c76a/view?project=65f63eb7a14355c1ee4e&mode=admin"
@@ -24,7 +24,7 @@ export default function Options() {
               <p className="font-sans leading-snug   tracking-normal text-mbl-2xl md:text-16px font-medium mb-0 mt-1 uppercase  text-[#5746af]">
                 MINHA PINTURA É INTERNA
               </p>
-            </Link>
+            </div>
           </header>
           <div className="flex flex-col lg:h-full lg:justify-between">
             <p className="text-[14px]">
@@ -37,10 +37,11 @@ export default function Options() {
         <Link
           className="flex break-words flex-col gap-4 border bg-white  p-6  rounded-[32px] transition-colors hover:border-[#5746af] lg:w-1/2"
           data-testid="home-modality-card"
-          href="/pt/hire/freelancers"
+          href={'/servico/externa'}
         >
+
           <header className="flex flex-col gap-4">
-            <Link href={'/servico/externa'}  className="flex items-center  ">
+            <div   className="flex items-center  ">
               
               <img
                 className="!aspect-auto h-10  mr-4"
@@ -50,7 +51,7 @@ export default function Options() {
               <p className="font-sans leading-snug   tracking-normal text-mbl-2xl md:text-16px font-medium mb-0 mt-1 uppercase  text-[#5746af]">
                 MINHA PINTURA É EXTERNA{" "}
               </p>{" "}
-            </Link>
+            </div>
           </header>
           <div className="flex flex-col lg:h-full lg:justify-between">
             <p className="text-[14px]">

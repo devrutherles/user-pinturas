@@ -34,7 +34,7 @@ export default function FormCadastro() {
           );
     setIsloading(false);
 
-        route.push("/");
+        route.push("/contratar");
       },
       function (error) {
         console.log(error); // Failure

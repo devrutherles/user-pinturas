@@ -44,7 +44,7 @@ export default function FormLogin() {
             }
           );
 
-        route.push("/");
+        route.push("/contratar");
       },
       function (error) {
         console.log(error); // Failure
