@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -16,13 +17,13 @@ export default function Example() {
         aria-hidden="true"
       ></div>
       <div className="mx-auto max-w-2xl text-center">
-        <a
+        <Link
           href="/"
           className="flex gap-[8px] mb-[8px] pl-[0] pr-[24px] py-[12px] text-[#5746af] w-[150px]"
         >
           <img src="https://wkncdn.com/newx/assets/build/img/signup/arrow-left.fc0b951aa.svg" />{" "}
           <p>Voltar</p>
-        </a>
+        </Link>
         <h2 className="text-3xl font-bold tracking-tight text-gray-600 sm:text-4xl">
           Fale conosco
         </h2>

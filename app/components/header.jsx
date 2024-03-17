@@ -2,15 +2,15 @@
 import { Fragment, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { account } from "../appwrite";
 import { useState , useContext } from "react";
 import { AuthContext } from "../hooks/authContext";
 import Link from "next/link";
 const navigation = [
-  { name: "Contrate", href: "#", current: true },
-  { name: "Meus projetos", href: "#", current: false },
-  { name: "Minhas finanças", href: "#", current: false },
+  { name: "Contratar ", href: "/contratar", current: true },
+  { name: "Meus serviços", href: "/perfil", current: false },
+  { name: "Perfil", href: "/perfil", current: false },
 ];
 
 function classNames(...classes) {
@@ -19,12 +19,9 @@ function classNames(...classes) {
 
 export default function Example() {
   const router = useRouter();
-  const {session,menageSession} = useContext(AuthContext)
-  const role = "client";
-  const user = JSON.parse(localStorage.getItem("user"));
+  const {session,menageSession, role, manageRole} = useContext(AuthContext)
   const [select,setSelect] = useState('Inicio')
-
-
+const path = usePathname()
   const logout = async () => {
     await account.deleteSession("current");
     menageSession(null);
@@ -36,25 +33,16 @@ export default function Example() {
   const getUser = async () => {
     const user =  account.getSession("current");
     user.then(function (response) {
-
-      console.log(response); 
-      
       menageSession(response);
-
-      // Success
   }, function (error) {
-      console.log(error); // Failure
+      console.error(error); // Failure
   });
    
   };
 
-  console.log(session)
-
   useEffect(() => {
     getUser();
   }, []);
-
-
 
   return (
     <Disclosure
@@ -76,14 +64,14 @@ export default function Example() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <a href="/" className="flex w-auto h-auto cursor-pointer">
+              <div className="flex flex-1 items-center justify-center sm:items-center sm:justify-start">
+                <Link href="/" className="flex w-auto h-auto cursor-pointer">
                   <img
                     alt=""
                     className="h-8"
-                    src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f6989c3835d327b838/view?project=65f63eb7a14355c1ee4e&mode=admin"
+                    src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f6d755ee28f3aeadf2/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   />
-                </a>
+                </Link>
                 <div className="hidden sm:ml-6 sm:block">
                   <div
                     className={classNames(
@@ -93,6 +81,7 @@ export default function Example() {
                   >
                     {navigation.map((item) => (
                       <Link
+                      key={item.name}
                       onClick={()=>setSelect(item.name)}
                         href={item.href}
                         className={classNames(
@@ -107,89 +96,55 @@ export default function Example() {
                     ))}
                   </div>
                 </div>
+
+
+                <div className={classNames(session ? 'md:!hidden' : "md:flex",    path == '/login' || path == '/cadastro' ? 'md:!hidden' :'md:flex'
+, "hidden  md:-ml-1/2 md:absolute md:left-0 md:top-5  md:w-full md:justify-center md:gap-4")}>
+                <Disclosure.Button
+                  as="button"
+                 onClick={()=>manageRole('client')}
+                  className={classNames(
+                    role == "client"
+                      ? " text-[#fff] bg-[#5746af]  "
+                      : "text-[#898989]  hover:text-[#5746af]",
+                    "block rounded-[10px] text-center px-2 py-1 text-base font-medium  "
+                  )}
+                >
+                  Quero contratar 
+                </Disclosure.Button>
+                <Disclosure.Button
+                  as="button"
+                 onClick={()=>manageRole('worker')}
+                  className={classNames(
+                    role == "worker"
+                      ? " text-[#fff] bg-[#5746af]  "
+                      : "text-[#898989]  hover:text-[#5746af]",
+                    "block rounded-[10px] text-center px-2 py-1 text-base font-medium "
+                  )}
+                >
+                  Quero trabalhar
+                </Disclosure.Button>
+              </div>
               </div>
 
               {session ? (
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    type="button"
-                    className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
+             
 
-                  {/* Profile dropdown */}
-                  <Menu as="div" className="relative ml-3">
-                    <div>
-                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                        <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                      </Menu.Button>
-                    </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href={"/"}
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Your Profile
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link
-                              href={"/"}
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Settings
-                            </Link>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              onClick={() => logout()}
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Sair{" "}
-                            </button>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
+             <button
+             onClick={()=> logout()}
+                  
+                  className="ml-6 inline-flex items-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
+                >
+                  Sair
+                </button>
                 </div>
               ) : (
                 <Link
                   href={"/login"}
-                  className="ml-6 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="ml-6 inline-flex items-center rounded-md bg-[#5746af] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#7a6cc2]"
                 >
-                  Login{" "}
+                  Login
                 </Link>
               )}
             </div>
@@ -206,6 +161,8 @@ export default function Example() {
                     item.current
 ? " text-[#404040]   "
 : "text-[#898989]  hover:text-[#404040]",
+
+session ? 'flex' : 'hidden',
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
@@ -214,10 +171,10 @@ export default function Example() {
                 </Disclosure.Button>
               ))}
 
-              <div className="flex justify-center !mt-8 gap-2 w-full items-center">
+              <div className={classNames( session ? '!hidden' : 'flex',  " justify-center !mt-8 gap-2 w-full items-center")}>
                 <Disclosure.Button
-                  as="a"
-                  href="#"
+                  as="button"
+                 onClick={()=>manageRole('client')}
                   className={classNames(
                     role == "client"
                       ? " text-[#fff] bg-[#5746af]  "
@@ -228,8 +185,8 @@ export default function Example() {
                   Quero contratar
                 </Disclosure.Button>
                 <Disclosure.Button
-                  as="a"
-                  href={"#"}
+                  as="button"
+                 onClick={()=>manageRole('worker')}
                   className={classNames(
                     role == "worker"
                       ? " text-[#fff] bg-[#5746af]  "

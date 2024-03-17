@@ -59,8 +59,7 @@ export default function Options() {
               garagem, quadras esportivas, área de lazer, entre outras.
             </p>
           </div>
-          </Link>
-
+        </Link>
       </div>
     </section>
   );

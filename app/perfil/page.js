@@ -11,6 +11,7 @@ import {
   UsersIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import CardServicos from "../components/cardServicos";
 import { Query } from "appwrite";
 import { databases } from "../appwrite";
@@ -76,7 +77,7 @@ export default function Example() {
             >
               {secondaryNavigation.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.href}
                     className={classNames(
                       item.name == current
@@ -95,7 +96,7 @@ export default function Example() {
                       aria-hidden="true"
                     />
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
