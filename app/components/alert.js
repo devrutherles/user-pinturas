@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/24/outline'
+import { CheckIcon ,UserCircleIcon} from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
 export default function Alert({open,setOpen}) {
