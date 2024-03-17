@@ -27,7 +27,7 @@ export default function FormLogin() {
         password: "Insira uma senha válida",
       }));
     } else {
-    const promise = account.createEmailPasswordSession(email, password);
+    const promise = account.createEmailSession(email, password);
     setIsloading(true);
     promise.then(
       function (response) {
