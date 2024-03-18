@@ -3,7 +3,6 @@ import { Menu, Transition } from '@headlessui/react'
 import { EllipsisHorizontalIcon } from '@heroicons/react/20/solid'
 import * as moment from 'moment';   import 'moment/locale/pt-br';
 
-
 const statuses = {
   Paid: 'text-green-700 bg-green-50 ring-green-600/20',
   Withdraw: 'text-gray-600 bg-gray-50 ring-gray-500/10',
@@ -18,7 +17,6 @@ function classNames(...classes) {
 export default function CardServicos({servico}) {
   moment.locale('pt')
 moment.updateLocale('pt')
-  console.log(servico)
   const client = 
     {
       id: servico?.$id,
@@ -28,10 +26,10 @@ moment.updateLocale('pt')
     }
   
   return (
-    <ul role="list" className="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+  <ul role="list" className="grid grid-cols-1 gap-x-6 gap-y-8  md:!grid-cols-2 xl:gap-x-8">
 {servico.map((client) => (
-        <li key={client.$id} className="overflow-hidden rounded-xl border border-gray-200">
-          <div className="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
+        <li key={client.$id} className="overflow-hidden bg-white rounded-xl border border-gray-200">
+          <div className="flex items-center gap-x-4  p-6">
             <img
               src={client?.servico != 'Pintura externa'?'https://cloud.appwrite.io/v1/storage/buckets/public/files/65f687cb6da92412c76a/view?project=65f63eb7a14355c1ee4e&mode=admin' : 'https://cloud.appwrite.io/v1/storage/buckets/public/files/65f687c00c4a9eeff4ef/view?project=65f63eb7a14355c1ee4e&mode=admin'}
               alt={client?.servico}
@@ -90,7 +88,7 @@ moment.updateLocale('pt')
                 <time dateTime={moment(client?.createdAt).locale('pt-br').format('lll')}>{moment(client?.createdAt).locale('pt-br').format('ll')}</time>
               </dd>
             </div>
-            <div className="flex justify-between gap-x-4 py-3">
+            <div className="flex justify-between  py-3">
               <dt className="text-gray-500">Valor</dt>
               <dd className="flex items-start gap-x-2">
                 <div className="font-medium mr-5 text-gray-900">R${client?.valor}</div>

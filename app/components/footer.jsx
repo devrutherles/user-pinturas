@@ -8,8 +8,8 @@ export default function Footer() {
           <div className="sm:col-span-2">
             <Link href="#">
               <img
-                className="w-auto h-7"
-                src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f6d755ee28f3aeadf2/view?project=65f63eb7a14355c1ee4e&mode=admin"
+                className=" h-8"
+                src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f785a9259025cfdcfa/view?project=65f63eb7a14355c1ee4e&mode=admin"
                 alt=""
               />
             </Link>

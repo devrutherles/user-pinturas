@@ -166,7 +166,7 @@ const Client = () => {
                     <span>Pagamentos protegidos</span>
                   </li>
                 </ul>
-                <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:mt-6 ">
+                <div className="flex flex-col items-center gap-4 md:flex-row  md:flex-wrap md:mt-6 ">
                   <Link
                     className="inline-flex gap-4 items-center font-medium text-base rounded-full py-3 px-6 max-md:justify-center focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-primary hover:transition-colors w-full md:w-auto bg-[#5746af]  hover:bg-secondary-low active:bg-secondary-low text-[#fff] focus:bg-secondary-low"
                     href="/contratar"
