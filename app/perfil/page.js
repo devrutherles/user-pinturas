@@ -306,9 +306,9 @@ const [password, setPassword] = useState("")
     const userData = localStorage.getItem("user")
  if(userData){
     setUser(JSON.parse(userData))
+
+    const user = JSON.parse(userData)
     console.log(user)
-
-
     let promise = databases.listDocuments("pintura", "servicos", [
       Query.equal("user_id", user?.$id),
     ]);
@@ -325,14 +325,14 @@ const [password, setPassword] = useState("")
     };
   
 
-
+    getServicos();
     
 
  }
    
 
   
-    getServicos();
+
   }, []);
   const avatar  = ()=>{
     const promise = avatars.getInitials()
