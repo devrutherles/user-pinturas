@@ -22,6 +22,8 @@ export default function Example() {
   const {session,menageSession, role, manageRole} = useContext(AuthContext)
   const [select,setSelect] = useState('Inicio')
 const path = usePathname()
+
+
   const logout = async () => {
     await account.deleteSession("current");
     menageSession(null);
@@ -179,7 +181,7 @@ return promise?.href
                         {({ active }) => (
                           <button
                           onClick={logout}
-                            href="#"
+                           
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sair
@@ -193,12 +195,12 @@ return promise?.href
             
                 </div>
               ) : (
-                <Link
-                  href={"/login"}
+                <button
+                  onClick={()=> router.push("/login")}
                   className="ml-6 inline-flex items-center rounded-md bg-[#5746af] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#7a6cc2]"
                 >
                   Login
-                </Link>
+                </button>
               )}
             </div>
           </div>
