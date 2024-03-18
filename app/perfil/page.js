@@ -287,15 +287,29 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] =
     useState(true);
-  const [current, setCurrent] = useState("profile");
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
+
+  const [current, setCurrent] = useState("Perfil");
+ 
+  const [user,setUser]= useState({})
+  
+
+  const [nome, setNome] = useState(user?.name);
+  const [email, setEmail] = useState(user?.email);
+
   const [servicos, setServicos] = useState([]);
   const [telefone, setTelefone ] = useState("")
   const [endereco,setEndereco] = useState("")
 const [password, setPassword] = useState("")
 
   useEffect(() => {
+
+
+    const userData = localStorage.getItem("user")
+ if(userData){
+    setUser(JSON.parse(userData))
+    console.log(user)
+
+
     let promise = databases.listDocuments("pintura", "servicos", [
       Query.equal("user_id", user?.$id),
     ]);
@@ -311,6 +325,14 @@ const [password, setPassword] = useState("")
       );
     };
   
+
+
+    
+
+ }
+   
+
+  }
     getServicos();
   }, []);
   const avatar  = ()=>{

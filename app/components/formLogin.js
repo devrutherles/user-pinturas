@@ -14,7 +14,7 @@ export default function FormLogin() {
     email: "",
     password: "",
   });
-  
+
   const login = async (email, password) => {
     if (!email) {
       setError((prevError) => ({
@@ -27,30 +27,31 @@ export default function FormLogin() {
         password: "Insira uma senha válida",
       }));
     } else {
-    const promise = account.createEmailSession(email, password);
-    setIsloading(true);
-    promise.then(
-      function (response) {
-        console.log(response);
-        menageSession(response),
-          account.get().then(
-            function (response) {
-              localStorage.setItem("user", JSON.stringify(response));
-              setIsloading(false);
-            },
-            function (error) {
-              console.log(error); // Failure
-              setIsloading(false);
-            }
-          );
+      const promise = account.createEmailSession(email, password);
+      setIsloading(true);
+      promise.then(
+        function (response) {
+          console.log(response);
+          menageSession(response),
+            account.get().then(
+              function (response) {
+                localStorage.setItem("user", JSON.stringify(response));
+                setIsloading(false);
+              },
+              function (error) {
+                console.log(error); // Failure
+                setIsloading(false);
+              }
+            );
 
-        route.push("/contratar");
-      },
-      function (error) {
-        console.log(error); // Failure
-      }
-    );
-  }};
+          route.push("/contratar");
+        },
+        function (error) {
+          console.log(error); // Failure
+        }
+      );
+    }
+  };
 
   return (
     <div>
@@ -63,7 +64,9 @@ export default function FormLogin() {
             Email
           </label>
           <div className="mt-2">
-          {error.email && <p className="text-red-600 text-[12px]">{error.email}</p>}
+            {error.email && (
+              <p className="text-red-600 text-[12px]">{error.email}</p>
+            )}
             <input
               id="email"
               name="email"
@@ -86,7 +89,9 @@ export default function FormLogin() {
             Senha
           </label>
           <div className="mt-2">
-          {error.password && <p className="text-red-600 text-[12px]">{error.password}</p>}
+            {error.password && (
+              <p className="text-red-600 text-[12px]">{error.password}</p>
+            )}
 
             <input
               id="password"
