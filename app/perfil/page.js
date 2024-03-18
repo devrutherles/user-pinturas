@@ -282,7 +282,6 @@ const List = ({servicos}) =>{
 }
 
 export default function Example() {
-  const user =  JSON.parse(localStorage.getItem("user"));
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] =
@@ -332,7 +331,7 @@ const [password, setPassword] = useState("")
  }
    
 
-  }
+  
     getServicos();
   }, []);
   const avatar  = ()=>{
