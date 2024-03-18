@@ -3,7 +3,7 @@ import { Fragment, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { usePathname, useRouter } from "next/navigation";
-import { account } from "../appwrite";
+import { account, avatars } from "../appwrite";
 import { useState , useContext } from "react";
 import { AuthContext } from "../hooks/authContext";
 import Link from "next/link";
@@ -43,7 +43,10 @@ const path = usePathname()
   useEffect(() => {
     getUser();
   }, []);
-
+const avatar  = ()=>{
+const promise = avatars.getInitials()
+return promise?.href
+}
   return (
     <Disclosure
       as="nav"
@@ -69,7 +72,7 @@ const path = usePathname()
                   <img
                     alt=""
                     className="h-8"
-                    src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f6d755ee28f3aeadf2/view?project=65f63eb7a14355c1ee4e&mode=admin"
+                    src="https://cloud.appwrite.io/v1/storage/buckets/public/files/65f785a9259025cfdcfa/view?project=65f63eb7a14355c1ee4e&mode=admin"
                   />
                 </Link>
                 <div className="hidden sm:ml-6 sm:block">
@@ -129,15 +132,64 @@ const path = usePathname()
 
               {session ? (
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-             
+              {/* Profile dropdown */}
+              <Menu as="div" className=" ml-3 z-[99999]">
+                  <div>
+                    <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="absolute -inset-1.5" />
+                      <span className="sr-only">Open user menu</span>
+                      <img
+                        className="h-8 w-8 rounded-full"
+                        src={avatar()}
+                        alt=""
+                      />
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/perfil"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                           Perfil
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="/perfil"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            Meus serviços
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                          >
+                            Sair
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
 
-             <button
-             onClick={()=> logout()}
-                  
-                  className="ml-6 inline-flex items-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
-                >
-                  Sair
-                </button>
+            
                 </div>
               ) : (
                 <Link

@@ -10,7 +10,7 @@ export default function Example() {
   const [agreed, setAgreed] = useState(false);
 
   return (
-    <div className=" px-6 py-24 sm:py-32 lg:px-8">
+    <div className=" px-6 py-8 sm:py-8 lg:px-8">
       <div
         className="absolute inset-x-0 top-[-10rem] -z-10  overflow-hidden sm:top-[-20rem]"
         aria-hidden="true"
