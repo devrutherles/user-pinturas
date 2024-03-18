@@ -5,7 +5,7 @@ import Context from "./hooks/authContext";
 import Footer from "./components/footer";
 
 export const metadata = {
-  title: "PinteJá",
+  title: "Fair Price",
   description: "Sua plataforma de serviços",
 };
 
